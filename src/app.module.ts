@@ -15,6 +15,7 @@ import { PublishingModule } from './post/publication.module';
       entities: [Publication],
       // sincronizacao o typeorm se atualizar um valor aqui, atualiza no BD
       synchronize: true,
+      logging: true, // mostra a instrução SQl gerada pelo o typeORM
     }),
     PublishingModule,
   ],

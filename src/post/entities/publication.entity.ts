@@ -1,3 +1,4 @@
+import { Transform, TransformFnParams } from 'class-transformer';
 import { IsNotEmpty } from 'class-validator';
 import {
   Column,
@@ -10,6 +11,7 @@ import {
 export class Publication {
   @PrimaryGeneratedColumn() // PK
   id: number;
+  @Transform(({ value }: TransformFnParams) => value?.trim()) // bloqueia espaço vazio
   @IsNotEmpty()
   @Column({ length: 100, nullable: false }) // nullable é tipo NOT NULL
   title: string;
