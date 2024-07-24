@@ -14,7 +14,7 @@ import { ThemeEntity } from './postTheme/entities/theme.entity';
       port: 3306,
       username: 'root',
       password: '217684',
-      database: 'db_blogpessoal',
+      database: 'db_personal_blog',
       entities: [Publication, ThemeEntity],
       // sincronizacao do typeorm se atualizar um valor aqui é atualizado no BD
       synchronize: true,
