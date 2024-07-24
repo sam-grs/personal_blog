@@ -2,7 +2,10 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Publication } from './post/entities/publication.entity';
 import { PublishingModule } from './post/publication.module';
+import { ThemeModule } from './postTheme/theme.module';
+import { ThemeEntity } from './postTheme/entities/theme.entity';
 
+// onde fica implementado o módulo raiz da aplicação
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -12,12 +15,14 @@ import { PublishingModule } from './post/publication.module';
       username: 'root',
       password: '217684',
       database: 'db_blogpessoal',
-      entities: [Publication],
-      // sincronizacao o typeorm se atualizar um valor aqui, atualiza no BD
+      entities: [Publication, ThemeEntity],
+      // sincronizacao do typeorm se atualizar um valor aqui é atualizado no BD
       synchronize: true,
-      logging: true, // mostra a instrução SQl gerada pelo o typeORM
+      // mostra a instrução SQl gerada pelo o typeORM
+      logging: true,
     }),
     PublishingModule,
+    ThemeModule,
   ],
   controllers: [],
   providers: [],
