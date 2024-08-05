@@ -23,7 +23,7 @@ import { UserModule } from './user/user.module'
             // sincronizacao do typeorm se atualizar um valor aqui é atualizado no BD
             synchronize: true,
             // mostra a instrução SQl gerada pelo o typeORM
-            logging: true,
+            // logging: true,
             bigNumberStrings: true,
         }),
         PublishingModule,

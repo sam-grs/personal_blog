@@ -7,7 +7,7 @@ import { UserEntity } from '../../user/entities/user.entity'
 // Criando entidade no banco de dados
 @Entity({ name: 'tb_posts' })
 export class PublicationEntity {
-    @PrimaryGeneratedColumn({ type: 'bigint' }) // PK
+    @PrimaryGeneratedColumn({ type: process.env.NODE_ENV === 'test' ? 'integer' : 'bigint' }) // PK
     id: number
 
     @Transform(({ value }: TransformFnParams) => value?.trim()) // bloqueia espaço vazio

@@ -6,7 +6,7 @@ import { Transform, TransformFnParams } from 'class-transformer'
 @Entity({ name: 'tb_users' })
 export class UserEntity {
     // precisa mesmo de public?
-    @PrimaryGeneratedColumn({ type: 'bigint' })
+    @PrimaryGeneratedColumn({ type: process.env.NODE_ENV === 'test' ? 'integer' : 'bigint' })
     id: number
 
     @Transform(({ value }: TransformFnParams) => value?.trim())

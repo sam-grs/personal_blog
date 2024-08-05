@@ -5,7 +5,7 @@ import { PublicationEntity } from '../../post/entities/publication.entity'
 
 @Entity({ name: 'tb_themes' })
 export class ThemeEntity {
-    @PrimaryGeneratedColumn({ type: 'bigint' })
+    @PrimaryGeneratedColumn({ type: process.env.NODE_ENV === 'test' ? 'integer' : 'bigint' })
     id: number
 
     @Transform(({ value }: TransformFnParams) => value?.trim())
