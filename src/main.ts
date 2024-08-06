@@ -9,7 +9,7 @@ async function bootstrap() {
     const config = new DocumentBuilder()
         .setTitle('Blog Pessoal')
         .setDescription('Projeto Blog Pessoal')
-        .setContact('Samira Grossi', 'URL do meu SITE', 'samira.grossi_oliveira@outlook.com')
+        .setContact('Samira Grossi', 'https://github.com/sam-grs', 'samira.grossi_oliveira@outlook.com')
         .setVersion('1.0')
         .addBearerAuth()
         .build()
