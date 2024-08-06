@@ -7,31 +7,25 @@ import { ThemeEntity } from './postTheme/entities/theme.entity'
 import { AuthModule } from './auth/auth.module'
 import { UserEntity } from './user/entities/user.entity'
 import { UserModule } from './user/user.module'
+import { AppController } from './app.controller'
+import { ConfigModule } from '@nestjs/config'
+import { ProdService } from './data/services/prod.service'
 
 // onde fica implementado o módulo raiz da aplicação
 // se não for chamado as classes aqui não seram criadas no banco
 @Module({
     imports: [
-        TypeOrmModule.forRoot({
-            type: 'mysql',
-            host: 'localhost',
-            port: 3306,
-            username: 'root',
-            password: '217684',
-            database: 'db_personal_blog',
-            entities: [PublicationEntity, ThemeEntity, UserEntity],
-            // sincronizacao do typeorm se atualizar um valor aqui é atualizado no BD
-            synchronize: true,
-            // mostra a instrução SQl gerada pelo o typeORM
-            // logging: true,
-            bigNumberStrings: true,
+        ConfigModule.forRoot(),
+        TypeOrmModule.forRootAsync({
+            useClass: ProdService,
+            imports: [ConfigModule],
         }),
         PublishingModule,
         ThemeModule,
         AuthModule,
         UserModule,
     ],
-    controllers: [],
+    controllers: [AppController],
     providers: [],
 })
 export class AppModule {}

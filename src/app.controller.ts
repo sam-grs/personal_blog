@@ -1,13 +1,13 @@
-import { Controller, Get } from '@nestjs/common'
-import { AppService } from './app.service'
-
+import { Controller, Get, Res } from '@nestjs/common'
+import { ApiExcludeEndpoint } from '@nestjs/swagger'
 // Aqui é onde define o endpoint home
 @Controller()
 export class AppController {
-    constructor(private readonly appService: AppService) {}
+    constructor() {}
 
+    @ApiExcludeEndpoint()
     @Get()
-    getHello(): string {
-        return this.appService.getHello()
+    async redirect(@Res() response: any) {
+        return response.redirect('/swagger')
     }
 }

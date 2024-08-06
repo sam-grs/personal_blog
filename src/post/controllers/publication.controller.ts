@@ -14,10 +14,13 @@ import {
 import { PublishingService } from '../services/publication.service'
 import { PublicationEntity } from '../entities/publication.entity'
 import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard'
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger'
 
 // Os métodos do CRUD descritos no Diagrama de Classes
+@ApiTags('Postagem')
 @UseGuards(JwtAuthGuard)
 @Controller('/postagens')
+@ApiBearerAuth()
 export class PublishingController {
     constructor(private readonly publishingService: PublishingService) {}
 
